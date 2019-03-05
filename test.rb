@@ -1,8 +1,3 @@
-=begin
-ex1
-
-
-=end
 wday = {sunday:"A", monday:"B"}
 
 wday.each do |key, value|
