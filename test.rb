@@ -9,3 +9,4 @@ array = []
 str = "blue 青 white 白\nred 赤"
 array = str.split(/\s/)
 p array
+#testest
