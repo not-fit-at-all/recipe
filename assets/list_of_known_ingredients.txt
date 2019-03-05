@@ -1,0 +1,13 @@
+potato  21
+canned tomato  365
+butter  180
+salt  730
+black pepper  90
+pasta  180
+bacon  30
+cheddar cheese  14
+parmesan cheese  60
+frozen hamburg  180
+frozen boiled spinach  180
+garlic  60
+spider eggs  10

@@ -1,0 +1,49 @@
+#Spaghetti aglio, olio e peperoncino
+spaghetti
+garlic
+olive oil
+red
+salt
+water
+
+#Spaghetti all'Arrabiata
+spaghetti
+garlic
+olive oil
+red chili
+canned tomato
+salt
+water
+
+#Ragu bolognese
+carrot
+onion
+celery
+ground meat
+red wine
+butter
+
+#Pot-au-feu
+celery
+carrot
+potato
+cabbage
+onion
+chicken
+beef
+black pepper
+salt
+water
+
+#Minestrone
+canned tomato
+bacon
+potato
+carrot
+onion
+
+#Ratatouille
+onion
+zucchini
+eggplant
+canned tomato

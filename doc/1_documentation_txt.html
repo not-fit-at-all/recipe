@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>1_documentation - test</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="project-metadata">
+    <div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./1_documentation_txt.html">1_documentation</a>
+  
+    <li><a href="./kondate_txt.html">kondate</a>
+  
+    <li><a href="./list_of_available_ingredients_txt.html">list_of_available_ingredients</a>
+  
+    <li><a href="./list_of_known_ingredients_txt.html">list_of_known_ingredients</a>
+  
+    <li><a href="./list_of_recipes_txt.html">list_of_recipes</a>
+  
+    <li><a href="./makeshift_recipe.html">makeshift_recipe</a>
+  
+    <li><a href="./stock_txt.html">stock</a>
+  
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page 1_documentation.txt">
+
+<p>Goals: high priority</p>
+
+<pre>The app shows me
+  what ingredients I need to consume
+  and how soon,
+  and possible choices of cuisines with such ingredients.</pre>
+
+<p>-medium priority</p>
+
+<pre class="ruby"><span class="ruby-constant">The</span> <span class="ruby-identifier">app</span> <span class="ruby-identifier">somehow</span> <span class="ruby-identifier">manages</span> <span class="ruby-identifier">quantity</span> <span class="ruby-identifier">of</span> <span class="ruby-identifier">ingredients</span>
+</pre>
+
+<p>-low priority</p>
+
+<pre>The app knows what season each ingredients are available and their prices.</pre>
+
+<p>To achieve high priority, the app needs to be able to:</p>
+
+<pre>prioritize ingredients
+  know current date. -done
+  know expiration date
+    from the stock list : NEEDS TO BE WORKED ON
+    otherwise by looking up database of ingredients -done
+with ingredients in stock prioritized, : NOT DONE AT ALL
+  show recipes that only require available ingredients
+  show recipes that require additional ingredients,
+    and what ingredients they require
+has databases of
+  available ingredients -done
+  recipes : NOT DONE AT ALL
+    high priority: required ingredients
+    low priority: the cooking process
+  general knowledge about ingredients
+    high priority: how fast the ingredient expires -done
+    medium priority: available seasons
+    low priority: prices of the ingredient depending on seasons</pre>
+
+<p>I wonder: Maybe I should keep the list of KI sorted, and sort AI.list when
+performing search, both alphabetically, to avoid searching from the top of
+the database every time.</p>
+
+<p>I want a program that churns out recipes based on the ingredients I have,
+and tells me shoping list</p>
+
+<p>I want the program to consider</p>
+
+<pre>what ingredients are available at the time
+cost of the ingredients
+cooking time
+how fast each ingredient degrades
+consuming all the ingredients before they degrade
+what kind of nutrients I get from each meal, and</pre>
+
+<p>all the meals from the week</p>
+
+<p>to do that I need a databases for</p>
+
+<pre class="ruby"><span class="ruby-identifier">recipes</span>
+<span class="ruby-identifier">ingredients</span>
+</pre>
+
+<p>and create instances of</p>
+
+<pre>stuff I have
+all the meals from the week
+  to get the idea of necessary nutrients
+list of recipes for the week
+ingredients I need</pre>
+
+<p>the program should be able to</p>
+
+<pre>create recipes based on what I have and lack
+  which means if I have nothing it still needs to be able to give something
+emergency recipe for the day I have something I need to get rid of
+adding recipes
+adding ingredients
+the program should know what ingredients I have left over, based on what I have and cooked</pre>
+
+<p>at least it should be able to do the following:</p>
+
+<pre>get a list of available ingredients and their amounts
+show what I can cook just with those
+show me the recipe that requires minimal shopping
+how much leftover it gives
+  and what I can cook with that up to a week0
+  and if it leaves something to be thrown away</pre>
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://rdoc.github.io/rdoc">RDoc</a> 5.0.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

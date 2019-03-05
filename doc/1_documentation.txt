@@ -1,0 +1,88 @@
+Goals:
+high priority
+  The app shows me
+    what ingredients I need to consume
+    and how soon,
+    and possible choices of cuisines with such ingredients.
+
+-medium priority
+  The app somehow manages quantity of ingredients
+
+-low priority
+  The app knows what season each ingredients are available and their prices.
+
+
+
+To achieve high priority, the app needs to be able to:
+  prioritize ingredients
+    know current date. -done
+    know expiration date
+      from the stock list : NEEDS TO BE WORKED ON
+      otherwise by looking up database of ingredients -done
+  with ingredients in stock prioritized, : NOT DONE AT ALL
+    show recipes that only require available ingredients
+    show recipes that require additional ingredients,
+      and what ingredients they require
+  has databases of
+    available ingredients -done
+    recipes : NOT DONE AT ALL
+      high priority: required ingredients
+      low priority: the cooking process
+    general knowledge about ingredients
+      high priority: how fast the ingredient expires -done
+      medium priority: available seasons
+      low priority: prices of the ingredient depending on seasons
+
+
+
+
+I wonder:
+Maybe I should keep the list of KI sorted, and sort AI.list when performing search,
+both alphabetically, to avoid searching from the top of the database every time.
+
+
+
+
+
+
+I want a program that
+churns out recipes based on the ingredients I have, and tells me shoping list
+
+I want the program to consider
+  what ingredients are available at the time
+  cost of the ingredients
+  cooking time
+  how fast each ingredient degrades
+  consuming all the ingredients before they degrade
+  what kind of nutrients I get from each meal, and
+all the meals from the week
+
+to do that I need a databases for
+  recipes
+  ingredients
+
+and create instances of
+  stuff I have
+  all the meals from the week
+    to get the idea of necessary nutrients
+  list of recipes for the week
+  ingredients I need
+
+
+the program should be able to
+  create recipes based on what I have and lack
+    which means if I have nothing it still needs to be able to give something
+  emergency recipe for the day I have something I need to get rid of
+  adding recipes
+  adding ingredients
+  the program should know what ingredients I have left over, based on what I have and cooked
+
+
+
+at least it should be able to do the following:
+  get a list of available ingredients and their amounts
+  show what I can cook just with those
+  show me the recipe that requires minimal shopping
+  how much leftover it gives
+    and what I can cook with that up to a week0
+    and if it leaves something to be thrown away

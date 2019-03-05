@@ -1,0 +1,13 @@
+Thu, 14 Feb 2019 23:11:28 +0900
+./1_documentation.txt	Wed, 13 Feb 2019 20:42:43 +0900
+./AvailableIngredient.rb	Wed, 13 Feb 2019 20:00:46 +0900
+./core.rb	Wed, 13 Feb 2019 20:03:34 +0900
+./KnownIngredient.rb	Wed, 13 Feb 2019 19:45:13 +0900
+./kondate.txt	Wed, 13 Feb 2019 20:06:02 +0900
+./list_of_available_ingredients.txt	Mon, 11 Feb 2019 13:58:54 +0900
+./list_of_known_ingredients.txt	Sun, 10 Feb 2019 15:19:06 +0900
+./list_of_recipes.txt	Wed, 13 Feb 2019 20:58:15 +0900
+./makeshift_recipe	Sun, 20 Jan 2019 23:29:52 +0900
+./recipe.rb	Wed, 13 Feb 2019 21:15:44 +0900
+./stock.txt	Sun, 20 Jan 2019 17:41:52 +0900
+./test.rb	Mon, 11 Feb 2019 13:59:28 +0900

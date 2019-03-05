@@ -1,0 +1,12 @@
+potato  2
+canned tomato 2
+butter  1
+salt
+black pepper
+pasta
+bacon 1.5
+cheddar cheese
+parmesan cheese
+hamburger 4
+boiled spinach  5
+garlic  10
