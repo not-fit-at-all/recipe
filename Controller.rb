@@ -72,6 +72,7 @@ class Controller
     def ai_group(array, priority)
       #returns array of each group
       #it should just take days_left, as priority is redundant
+      #but needs some functionarity to target a span of time
       group = Array.new
       array.each do |ai|
         if ai.priority == priority
