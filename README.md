@@ -5,6 +5,7 @@ high priority
     what ingredients I need to consume
     and how soon,
     and possible choices of cuisines with such ingredients.
+
 -medium priority
   The app somehow manages quantity of ingredients
 
