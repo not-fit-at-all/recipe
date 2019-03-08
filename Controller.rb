@@ -35,14 +35,16 @@ class Controller
       return ki_list
     end
 
-    def list_recipes
+    def list_recipes(known_ingredients_list)
       recipe_list = Array.new #contains all the recipes on the file
       required_ingredients = Array. new #temporarily holds the required ingredients
-      known_ingredients = self.list_known_ingredients
+      if known_ingredients_list == nil #can recieve already available list as argument
+        known_ingredients = self.list_known_ingredients #otherwise create anew
+      else known_ingredients = known_ingredients_list
+      end
       file = File.open("assets/list_of_recipes.txt") #list_of_recipes.txt
       file.each_line do |line|
         if line =~ /^#/
-          puts line
           cuisine = line.delete("#") #temporarily holds the names of the cuisine
           puts "!#{cuisine}"
         elsif line =~ /^$/
