@@ -11,3 +11,15 @@ frozen hamburg  180
 frozen boiled spinach  180
 garlic  60
 spider eggs  10
+spaghetti  180
+olive oil  90
+red chili  90
+onion  14
+zucchini  7
+eggplant 7
+celery  7
+carrot  7
+water  99999
+cabbage  14
+chicken  3
+beef  2
