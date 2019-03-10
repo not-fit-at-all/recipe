@@ -2,6 +2,7 @@ class View
   require_relative "Controller"
   class << self
     def show_list(array)
+      puts "View.show_list"
       puts array.length
       if array.length = 0
         puts "NONE"
@@ -12,6 +13,7 @@ class View
       end
     end
     def show_ai(available_ingredients)
+      puts "View.show_ai"
       if available_ingredients.length == 0
         puts "NONE"
       else
@@ -22,6 +24,7 @@ class View
     end #show_ai
 
     def show_required_ingredients_list(array)
+      puts "View.show_required_ingredients_list"
       array.each do |cuisines|
         puts cuisines.name
         self.show_list(cuisines.required_ingredients)

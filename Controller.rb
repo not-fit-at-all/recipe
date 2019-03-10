@@ -5,6 +5,7 @@ class Controller
   #require_relative "Recipe"
   class << self
     def list_available_ingredients
+      puts "Controller.list_available_ingredients"
       #convert list of strings into AI, and put it in an array
       #skip if already created
       ai_list = Array.new
@@ -24,6 +25,7 @@ class Controller
     end
 
     def list_known_ingredients
+      puts "Controller.list_known_ingredients"
       ki_list = Array.new
       file = File.open("assets/list_of_known_ingredients.txt")
       file.each_line do |line|
@@ -35,54 +37,54 @@ class Controller
       return ki_list
     end
 
-    def list_cuisines(known_ingredients_list)
-      recipe_list = Array.new #contains all the recipes on the file
+    def list_cuisines(known_ingredients = self.list_known_ingredients)
+      puts "Controller.list_cuisines"
+      cuisines_list = Array.new #contains all the cuisines on the file
       required_ingredients = Array. new #temporarily holds the required ingredients
-      if known_ingredients_list == nil #can recieve already available list as argument
-        known_ingredients = self.list_known_ingredients #otherwise create anew
-      else known_ingredients = known_ingredients_list
-      end
+      #if known_ingredients_list == nil #can recieve already available list as argument
+      #  known_ingredients = self.list_known_ingredients #otherwise create anew
+      #else known_ingredients = known_ingredients_list
+      #end
       length = known_ingredients.length
-      puts "length = #{length}"
+      puts "the number of known ingredients = #{length}"
       file = File.open("assets/list_of_cuisines.txt") #list_of_recipes.txt
-      cuisine = String.new #temporarily stores the name of the cuisine
+      cuisine_name = String.new #temporarily stores the name of the cuisine
       required_ingredients = Array.new #temporarily stores th required ingredients
       file.each_line do |line|
-        #definitions abve resets them too often, resulting in
-        #data not being saved to recipe_list
-        if line =~ /^#/
+        if line =~ /^#/ #cuisine's name
           cuisine = line.delete("#") #temporarily holds the names of the cuisine
-        elsif line =~ /^$/
-          recipe_list << Recipe.new(cuisine, required_ingredients)
+        elsif line =~ /^$/ #end of the required ingredients
+          cuisines_list << Recipe.new(cuisine, required_ingredients)
           cuisine = nil
           required_ingredients =Array.new
           #puts "END"
           #puts ""
-
           next
         else
-          known_ingredients.each do |ki|###
+          missed = 0
+          known_ingredients.each do |ki|
             if line.chomp == ki.name
-              #puts line.chomp
               required_ingredients << ki
             else
-
-              #tests if it has missed (lengthofthearray) times
-              #if true then puts "miss" for now.
-              #later it shoud ask to add the ki.
-              #(need the method to add things to assets)
+              missed += 1
+              if missed == length
+                puts "can't find #{line.chomp}"
+                #later it shoud ask to add the ki.
+                #(need the method to add things to assets)
+              end
             end#if
           end#if line
           #need to test this method
           #View.show_list(required_ingredients)
         end
       end
-      return recipe_list
+      return cuisines_list
     end
 
 
 
     def extract_ai(array, max, min = 0)
+      puts "Controller.extract_ai"
       #returns array of each group
       #it should just take days_left, as priority is redundant
       #but needs some functionarity to target a span of time
