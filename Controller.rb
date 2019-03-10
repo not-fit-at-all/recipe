@@ -35,7 +35,7 @@ class Controller
       return ki_list
     end
 
-    def list_recipes(known_ingredients_list)
+    def list_cuisines(known_ingredients_list)
       recipe_list = Array.new #contains all the recipes on the file
       required_ingredients = Array. new #temporarily holds the required ingredients
       if known_ingredients_list == nil #can recieve already available list as argument
@@ -79,17 +79,17 @@ class Controller
 
 
 
-    def ai_group(array, priority)
+    def extract_ai(array, max, min = 0)
       #returns array of each group
       #it should just take days_left, as priority is redundant
       #but needs some functionarity to target a span of time
-      group = Array.new
+      extract = Array.new
       array.each do |ai|
-        if ai.priority == priority
-          group << ai
+        if ai.days_left <= max and ai.days_left > min
+          extract << ai
         end
       end
-      return group
-    end
-  end
+      return extract
+    end #def extract_ai
+  end #class << self
 end
