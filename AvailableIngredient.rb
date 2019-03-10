@@ -9,6 +9,7 @@ class AvailableIngredient
   attr_reader :days_left
   attr_reader :priority
   def initialize(name, date_of_purchase)
+    puts "AvailableIngredient.initialize  (#{name})"
     #should take expiration date if available
     @name = name
     @date_of_purchase = date_of_purchase
@@ -28,8 +29,9 @@ class AvailableIngredient
 
   end
   def get_expiration
+    puts " AvailableIngredient.get_expiration"
     i = 0
-    kil = Controller.list_known_ingredients
+    kil = Controller.list_known_ingredients#this should not be happening
     kil.each do |ki|
       if ki.name == @name
         return @date_of_purchase + ki.shelf_life
@@ -41,7 +43,7 @@ class AvailableIngredient
       puts "unknown ingredient: #{@name}"
       puts "How many days does it last after purchase? : "
       return @date_of_purchase + gets.chomp.to_i
-      #dis dialogue should add the ingredient to the list and the file,
+      #this dialogue should add the ingredient to the list and the file,
       #instead of just proceeding like this
     end
   end

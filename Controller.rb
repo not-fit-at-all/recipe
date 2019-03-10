@@ -25,7 +25,7 @@ class Controller
     end
 
     def list_known_ingredients
-      puts "Controller.list_known_ingredients"
+      puts " Controller.list_known_ingredients"
       ki_list = Array.new
       file = File.open("assets/list_of_known_ingredients.txt")
       file.each_line do |line|
@@ -46,7 +46,7 @@ class Controller
       #else known_ingredients = known_ingredients_list
       #end
       length = known_ingredients.length
-      puts "the number of known ingredients = #{length}"
+      puts "  the number of known ingredients = #{length}"
       file = File.open("assets/list_of_cuisines.txt") #list_of_recipes.txt
       cuisine_name = String.new #temporarily stores the name of the cuisine
       required_ingredients = Array.new #temporarily stores th required ingredients
@@ -68,7 +68,7 @@ class Controller
             else
               missed += 1
               if missed == length
-                puts "can't find #{line.chomp}"
+                puts "  can't find #{line.chomp}"
                 #later it shoud ask to add the ki.
                 #(need the method to add things to assets)
               end
@@ -84,7 +84,7 @@ class Controller
 
 
     def extract_ai(array, max, min = 0)
-      puts "Controller.extract_ai"
+      puts "Controller.extract_ai (#{min} - #{max})"
       #returns array of each group
       #it should just take days_left, as priority is redundant
       #but needs some functionarity to target a span of time

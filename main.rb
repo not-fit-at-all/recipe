@@ -13,9 +13,7 @@ cuisines = Controller.list_cuisines(known_ingredients)
 available_ingredients = Controller.list_available_ingredients#contains AvailableIngredient
 
 #show list of available ingredients - I should probably make it a class method
-available_ingredients.each do |ai|
-  puts "#{ai.days_left} days left for #{ai.name}"
-end
+View.show_ai(available_ingredients)
 
 high_priority = Controller.extract_ai(available_ingredients, 1)
 midium_priority = Controller.extract_ai(available_ingredients, 3,2)

@@ -18,7 +18,7 @@ class View
         puts "NONE"
       else
         available_ingredients.each do |ai|
-          puts "#{ai.days_left} days left for #{ai.name}"
+          puts "  #{ai.days_left} days left for #{ai.name}"
         end
       end
     end #show_ai

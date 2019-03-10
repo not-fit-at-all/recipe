@@ -22,3 +22,14 @@ p array
 
 test = Controller.list_recipes(nil)
 View.show_required_ingredients_list(test)
+
+
+=begin
+thoguts
+
+
+
+
+
+
+=end
