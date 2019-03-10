@@ -43,27 +43,35 @@ class Controller
       else known_ingredients = known_ingredients_list
       end
       file = File.open("assets/list_of_recipes.txt") #list_of_recipes.txt
+      cuisine = String.new #temporarily stores the name of the cuisine
+      required_ingredients = Array.new #temporarily stores th required ingredients
       file.each_line do |line|
+        #definitions abve resets them too often, resulting in
+        #data not being saved to recipe_list
         if line =~ /^#/
           cuisine = line.delete("#") #temporarily holds the names of the cuisine
-          puts "!#{cuisine}"
         elsif line =~ /^$/
-          puts "END"
-          puts cuisine
-          puts required_ingredients
           recipe_list << Recipe.new(cuisine, required_ingredients)
           cuisine = nil
-          required_ingredients = nil
+          required_ingredients =Array.new
+          #puts "END"
+          #puts ""
 
           next
         else
-          puts line
-          known_ingredients.each do |ki|
-            if line == ki.name
+          known_ingredients.each do |ki|###
+            if line.chomp == ki.name
+              #puts line.chomp
               required_ingredients << ki
-            end
-          end
+            else
+              #tests if it has missed (lengthofthearray) times
+              #if true then puts "miss" for now.
+              #later it shoud ask to add the ki.
+              #(need the method to add things to assets)
+            end#if
+          end#if line
           #need to test this method
+          #View.show_list(required_ingredients)
         end
       end
       return recipe_list
