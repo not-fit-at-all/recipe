@@ -2,8 +2,8 @@
 Goals:
 high priority
   The app shows me
-    what ingredients I need to consume
-    and how soon,
+    what ingredients I need to consume  -done
+    and how soon, -done
     and possible choices of cuisines with such ingredients.
 
 -medium priority
@@ -17,7 +17,7 @@ high priority
 To achieve high priority, the app needs to be able to:
   prioritize ingredients
     know current date. -done
-    know expiration date
+    know expiration date -done
       from the stock list : NEEDS TO BE WORKED ON
       otherwise by looking up database of ingredients -done
   with ingredients in stock prioritized, : NOT DONE AT ALL
