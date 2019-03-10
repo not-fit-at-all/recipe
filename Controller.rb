@@ -42,7 +42,9 @@ class Controller
         known_ingredients = self.list_known_ingredients #otherwise create anew
       else known_ingredients = known_ingredients_list
       end
-      file = File.open("assets/list_of_recipes.txt") #list_of_recipes.txt
+      length = known_ingredients.length
+      puts "length = #{length}"
+      file = File.open("assets/list_of_cuisines.txt") #list_of_recipes.txt
       cuisine = String.new #temporarily stores the name of the cuisine
       required_ingredients = Array.new #temporarily stores th required ingredients
       file.each_line do |line|
@@ -64,6 +66,7 @@ class Controller
               #puts line.chomp
               required_ingredients << ki
             else
+
               #tests if it has missed (lengthofthearray) times
               #if true then puts "miss" for now.
               #later it shoud ask to add the ki.
