@@ -27,6 +27,11 @@ View.show_required_ingredients_list(test)
 =begin
 thoguts
 
+maybe I should just have an Ingredient class,
+instead of having AvailanbleIngredient and
+KnownIngredient. or at least, they should be
+subclass of Ingredient class.
+
 
 nanki/text_layout
 aptinio/text-table
