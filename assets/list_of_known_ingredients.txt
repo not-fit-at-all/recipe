@@ -23,3 +23,6 @@ water  99999
 cabbage  14
 chicken  3
 beef  2
+ground meat  2
+red wine  30
+eggplant  5

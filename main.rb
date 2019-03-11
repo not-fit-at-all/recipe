@@ -4,7 +4,7 @@
 require "date"
 require_relative "KnownIngredient"
 require_relative "AvailableIngredient"
-require_relative "Recipe"
+require_relative "Cuisine"
 require_relative "Controller"
 require_relative "View"
 

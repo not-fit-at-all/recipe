@@ -1,4 +1,4 @@
-class Recipe
+class Cuisine
   require_relative "KnownIngredient"
   #look for the recipes that use ingredints of each priority group
   #and return them as an array, sorted by the number of high prio ingredients they consume

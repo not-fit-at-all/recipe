@@ -5,6 +5,8 @@ Goals:
     what ingredients I need to consume  -done
     and how soon, -done
 #    and possible choices of cuisines with such ingredients.
+      how? cuisines, upon its generation checks ri's availability,
+      and stores that in itself
 
 #medium priority
 #  The app somehow manages quantity of ingredients

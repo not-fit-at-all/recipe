@@ -2,7 +2,7 @@ class Controller
   require "date"
   require_relative "AvailableIngredient"
   require_relative "KnownIngredient"
-  #require_relative "Recipe"
+  #require_relative "cuisine"
   class << self
     def list_available_ingredients
       puts "Controller.list_available_ingredients"
@@ -25,7 +25,7 @@ class Controller
     end
 
     def list_known_ingredients
-      puts " Controller.list_known_ingredients"
+      puts "Controller.list_known_ingredients"
       ki_list = Array.new
       file = File.open("assets/list_of_known_ingredients.txt")
       file.each_line do |line|
@@ -47,14 +47,14 @@ class Controller
       #end
       length = known_ingredients.length
       puts "  the number of known ingredients = #{length}"
-      file = File.open("assets/list_of_cuisines.txt") #list_of_recipes.txt
+      file = File.open("assets/list_of_cuisines.txt") #list_of_cuisines.txt
       cuisine_name = String.new #temporarily stores the name of the cuisine
       required_ingredients = Array.new #temporarily stores th required ingredients
       file.each_line do |line|
         if line =~ /^#/ #cuisine's name
           cuisine = line.delete("#") #temporarily holds the names of the cuisine
         elsif line =~ /^$/ #end of the required ingredients
-          cuisines_list << Recipe.new(cuisine, required_ingredients)
+          cuisines_list << Cuisine.new(cuisine, required_ingredients)
           cuisine = nil
           required_ingredients =Array.new
           #puts "END"
