@@ -37,7 +37,7 @@ class Controller
       return ki_list
     end
 
-    def list_cuisines(known_ingredients = self.list_known_ingredients)
+    def list_cuisines(known_ingredients = self.list_known_ingredients, ai)
       puts "Controller.list_cuisines"
       cuisines_list = Array.new #contains all the cuisines on the file
       required_ingredients = Array. new #temporarily holds the required ingredients
@@ -54,7 +54,7 @@ class Controller
         if line =~ /^#/ #cuisine's name
           cuisine = line.delete("#") #temporarily holds the names of the cuisine
         elsif line =~ /^$/ #end of the required ingredients
-          cuisines_list << Cuisine.new(cuisine, required_ingredients)
+          cuisines_list << Cuisine.new(cuisine, required_ingredients, ai)
           cuisine = nil
           required_ingredients =Array.new
           #puts "END"

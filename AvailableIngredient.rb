@@ -1,13 +1,13 @@
-require "date"
-require_relative "KnownIngredient"
 
 class AvailableIngredient
+  require "date"
+  require_relative "KnownIngredient"
   #contains the data of each of the available ingredients in stock
   #why am I not using hash object instead?
   attr_reader :name
   attr_reader :expiration
   attr_reader :days_left
-  attr_reader :priority
+  attr_reader :quantity
   def initialize(name, date_of_purchase)
     puts "AvailableIngredient.initialize  (#{name})"
     #should take expiration date if available
@@ -15,18 +15,7 @@ class AvailableIngredient
     @date_of_purchase = date_of_purchase
     @expiration = self.get_expiration
     @days_left = (@expiration - Date.today).to_i
-
-    case @days_left
-    when (0..1)
-      @priority = 1
-    when (2..3)
-      @priority = 2
-    when (4..7)
-      @priority = 3
-    else
-      @priority = 4
-    end
-
+    @quantity = 1 #placeholder. should be fetched from the list
   end
   def get_expiration
     puts " AvailableIngredient.get_expiration"
