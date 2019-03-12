@@ -11,16 +11,12 @@ class Cuisine
     @name = name #The name of the cuisine
     @required_ingredients = required_ingredients #Contains an array of KnownIngredient
     #quantity?
+    @missing_ingredients = self.list_missing_ingredients(available_ingredients)
 
 
   end
 
-  def list_missing_ingredients
-    =begin
-    to find missing ingredients, for each required_ingredients I need to
-    look up on an array that is the product of Controller.list_available_ingredients
-    and see if there is a sufficient quantity of such ingredient.
-    =end
+  def list_missing_ingredients(available_ingredients)
     @missing_ingredients = Array.new
     number_of_ai = available_ingredients.length
     @required_ingredients.each do |ri|
@@ -37,3 +33,9 @@ class Cuisine
     end#ri
   end
 end
+
+=begin
+to find missing ingredients, for each required_ingredients I need to
+look up on an array that is the product of Controller.list_available_ingredients
+and see if there is a sufficient quantity of such ingredient.
+=end
