@@ -1,5 +1,5 @@
 class View
-  require_relative "Controller"
+  require_relative "../Controllers/Controller"
   class << self
     def show_list(array)
       puts "View.show_list"

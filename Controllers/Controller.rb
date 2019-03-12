@@ -1,7 +1,7 @@
 class Controller
   require "date"
-  require_relative "AvailableIngredient"
-  require_relative "KnownIngredient"
+  require_relative "../Models/AvailableIngredient"
+  require_relative "../Models/KnownIngredient"
   #require_relative "cuisine"
   class << self
     def list_available_ingredients

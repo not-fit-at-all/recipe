@@ -2,11 +2,11 @@
 #define AvailableIngredients
 #convert the file into AvailableIngredient
 require "date"
-require_relative "KnownIngredient"
-require_relative "AvailableIngredient"
-require_relative "Cuisine"
-require_relative "Controller"
-require_relative "View"
+require_relative "Models/KnownIngredient"
+require_relative "Models/AvailableIngredient"
+require_relative "Models/Cuisine"
+require_relative "Controllers/Controller"
+require_relative "Views/View"
 
 known_ingredients = Controller.list_known_ingredients
 available_ingredients = Controller.list_available_ingredients#contains AvailableIngredient
