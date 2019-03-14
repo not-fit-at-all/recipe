@@ -4,40 +4,9 @@ class Controller
   require_relative "../Models/KnownIngredient"
   #require_relative "cuisine"
   class << self
-    def list_available_ingredients
-      puts "Controller.list_available_ingredients"
-      #convert list of strings into AI, and put it in an array
-      #skip if already created
-      ai_list = Array.new
-      file = File.open("assets/list_of_available_ingredients.txt")
-      file.each_line do |line|
-        temp = Array.new
-        temp = line.chomp.split(/\s\s/) #fails when the file isn't formatted properly
-        temp[1] = Date.strptime(temp[1], "%Y/%m/%d")
-        ai_list << AvailableIngredient.new(temp[0], temp[1])
-      end
-      file.close
-      #sort the list by days left
-      ai_list.sort_by! do |i|
-        i.days_left
-      end
-      return ai_list
-    end
 
-    def list_known_ingredients
-      puts "Controller.list_known_ingredients"
-      ki_list = Array.new
-      file = File.open("assets/list_of_known_ingredients.txt")
-      file.each_line do |line|
-        temp = line.split(/\s\s/)
-        temp[1] = temp[1].to_i
-        ki_list << KnownIngredient.new(temp[0], temp[1])
-      end
-      file.close
-      return ki_list
-    end
 
-    def list_cuisines(known_ingredients = self.list_known_ingredients, ai)
+    def list_cuisines(known_ingredients = KnownIngredients.list, ai)
       puts "Controller.list_cuisines"
       cuisines_list = Array.new #contains all the cuisines on the file
       required_ingredients = Array. new #temporarily holds the required ingredients
@@ -83,18 +52,5 @@ class Controller
 
 
 
-    def extract_ai(array, max, min = 0)
-      puts "Controller.extract_ai (#{min} - #{max})"
-      #returns array of each group
-      #it should just take days_left, as priority is redundant
-      #but needs some functionarity to target a span of time
-      extract = Array.new
-      array.each do |ai|
-        if ai.days_left <= max and ai.days_left > min
-          extract << ai
-        end
-      end
-      return extract
-    end #def extract_ai
   end #class << self
 end

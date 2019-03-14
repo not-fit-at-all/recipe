@@ -1,10 +1,10 @@
 class View
   require_relative "../Controllers/Controller"
   class << self
-    def show_list(array)
+    def show_list(array) #broken
       puts "View.show_list"
       puts array.length
-      if array.length = 0
+      if array.length == 0
         puts "NONE"
       else
         array.each do |ai|
@@ -12,6 +12,7 @@ class View
         end
       end
     end
+
     def show_ai(available_ingredients)
       puts "View.show_ai"
       if available_ingredients.length == 0
