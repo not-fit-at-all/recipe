@@ -17,10 +17,11 @@ class AvailableIngredient
     @days_left = (@expiration - Date.today).to_i
     @quantity = 1 #placeholder. should be fetched from the list
   end
+
   def get_expiration
     puts " AvailableIngredient.get_expiration"
     i = 0
-    kil = Controller.list_known_ingredients#this should not be happening
+    kil = KnownIngredient.list#this should not be happening
     kil.each do |ki|
       if ki.name == @name
         return @date_of_purchase + ki.shelf_life
@@ -36,4 +37,42 @@ class AvailableIngredient
       #instead of just proceeding like this
     end
   end
+
+  class << self
+    def list(file_name = "assets/list_of_available_ingredients.txt")
+      puts "AvailableIngredient.list"
+      #convert list of strings into AI, and put it in an array
+      #skip if already created
+      ai_list = Array.new
+      file = File.open(file_name)
+      file.each_line do |line|
+        ai = Array.new
+        ai = line.chomp.split(/\s\s/) #fails when the file isn't formatted properly
+        ai[1] = Date.strptime(ai[1], "%Y/%m/%d")
+        ai_list << self.new(ai[0], ai[1])
+      end
+      file.close
+      #sort the list by days left
+      ai_list.sort_by! do |i|
+        i.days_left
+      end
+      return ai_list
+    end
+
+    def extract(array, max, min = 0)
+      puts "AvailableIngredient.extract (#{min} - #{max})"
+      #returns array of each group
+      #it should just take days_left, as priority is redundant
+      #but needs some functionarity to target a span of time
+      extract = Array.new
+      array.each do |ai|
+        if ai.days_left <= max and ai.days_left > min
+          extract << ai
+        end
+      end
+      return extract
+    end #def extract_ai
+
+  end
+
 end
