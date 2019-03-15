@@ -33,5 +33,14 @@ class View
       end
     end
 
+    def show_cuisines(cuisines)
+      cuisines.each do |cuisine|
+        puts "#{cuisine.name}================="
+        cuisine.missing_ingredients.each do |mi|
+          puts "  #{mi.name}"
+        end
+      end
+    end
+
   end#class << self
 end

@@ -1,88 +1,80 @@
-Goals:
-high priority
-  The app shows me
-    what ingredients I need to consume
-    and how soon,
-    and possible choices of cuisines with such ingredients.
+assets
+list of known ingredients
+  contains names, how long they generally last.
+  (in future they should also contain how to convert between different units.)
 
--medium priority
-  The app somehow manages quantity of ingredients
-
--low priority
-  The app knows what season each ingredients are available and their prices.
+list of available ingredients
+  contains list of ingredients available.
+  names and dates of purchase.
+  (and quantity is to be added. need unit too.)
+  perhaps available ingredients should be instances of known ingredients?
 
 
+list of cuisines
+  contains names and list of required ingredients.
+  (in future the file should also contain
+    how much of each ingredients it requires,
+    how nutritious they are,
+    how long it takes to cook them.
+  )
 
-To achieve high priority, the app needs to be able to:
-  prioritize ingredients
-    know current date. -done
-    know expiration date
-      from the stock list : NEEDS TO BE WORKED ON
-      otherwise by looking up database of ingredients -done
-  with ingredients in stock prioritized, : NOT DONE AT ALL
-    show recipes that only require available ingredients
-    show recipes that require additional ingredients,
-      and what ingredients they require
-  has databases of
-    available ingredients -done
-    recipes : NOT DONE AT ALL
-      high priority: required ingredients
-      low priority: the cooking process
-    general knowledge about ingredients
-      high priority: how fast the ingredient expires -done
-      medium priority: available seasons
-      low priority: prices of the ingredient depending on seasons
+File structure seems sensible. No overwraps.
 
 
+upon loading
 
+instances of KnownIngredient are created and stored in an Array.
+  @name
+  @shelf_life
+  (Rational @g_per_piece etc, Int @price etc)
+  KnownIngredient class is a dictionary of ingredients.
+  it should be created only once upon starting the program.
+  (name too long. Ingredient, maybe?)
 
-I wonder:
-Maybe I should keep the list of KI sorted, and sort AI.list when performing search,
-both alphabetically, to avoid searching from the top of the database every time.
+instances of AvailableIngredient are created and stored in arrays.
+  @name
+  @date_of_purchase
+  @exp_date (reference KI)
+  @days_left
+  @quantity (it's already there, but not working.)
+  in an array, there can be multiple instances of same ingredient:
+    ex. two potatoes that expire tomorrow and one that expires next week
+  so when a method tries to get the quantity,
+  it should read the array thoroughly then sum.
+  AvailableIngredient class is necessary to determine what I can cook right now.
+  .extract method creates an array depending on @days_left.
 
+instances of Cuisine are created and stored in an array.
+  @name
+  @required_ingredients (Array)
+  @missing_ingredients (reference AI)
+  (@time, @nutrition, @how_to_cook)
+  !!!!!I can somehow feed an array of AvailableIngredient,
+  so I can calculate
+    1. of what cuisines I have all the ingredients,
+    2. of what cuisines I have part of the ingredients.
+  with instance methods of Cuisine that take array of AvailableIngredient.
+  Cuisine.all_available?(AI)
+    returns true and false
+  Cuisine.missing_ingredients(AI)
+    returns array of missing ingredients
 
+FLOW:
+  load known ingredients
+  load available ingredients
+  load cuisines
 
+  using the array of all of the AvailableIngredient,
+    create an array of cuisines with all the ingredients available.
+    do not show now, just store.
+  extract high priority AI,
+  feed it to a method of Cuisine to count how many high priority stuff they use.
+  sort the aforementioned array using the numbers just got. BATHROOM
 
+Models seem generally fine.
 
-
-I want a program that
-churns out recipes based on the ingredients I have, and tells me shoping list
-
-I want the program to consider
-  what ingredients are available at the time
-  cost of the ingredients
-  cooking time
-  how fast each ingredient degrades
-  consuming all the ingredients before they degrade
-  what kind of nutrients I get from each meal, and
-all the meals from the week
-
-to do that I need a databases for
-  recipes
-  ingredients
-
-and create instances of
-  stuff I have
-  all the meals from the week
-    to get the idea of necessary nutrients
-  list of recipes for the week
-  ingredients I need
-
-
-the program should be able to
-  create recipes based on what I have and lack
-    which means if I have nothing it still needs to be able to give something
-  emergency recipe for the day I have something I need to get rid of
-  adding recipes
-  adding ingredients
-  the program should know what ingredients I have left over, based on what I have and cooked
-
-
-
-at least it should be able to do the following:
-  get a list of available ingredients and their amounts
-  show what I can cook just with those
-  show me the recipe that requires minimal shopping
-  how much leftover it gives
-    and what I can cook with that up to a week0
-    and if it leaves something to be thrown away
+problem: currently it is very troublesome to change the shape of the data,
+because they are treated as arrays inside arrays.
+there should probably an easy way around this; I should look for gems.
+problem: if I only need one class of cuisine instead of
+KnownCuisine and PossibleCuisine, perhaps I only need one Ingredient class?

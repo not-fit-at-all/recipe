@@ -5,8 +5,8 @@ Goals:
     what ingredients I need to consume  -done
     and how soon, -done
 #    and possible choices of cuisines with such ingredients.
-      how? cuisines, upon its generation checks ri's availability,
-      and stores that in itself
+      how? cuisines, upon its generation checks its ingredients' availability, then stores them in itself
+      need to sort sttuff out, as I am failing to remember what class have what method
 
 #medium priority
 #  The app somehow manages quantity of ingredients
