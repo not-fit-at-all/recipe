@@ -1,4 +1,5 @@
 class View
+  require "text-table"
   require_relative "../Controllers/Controller"
   class << self
     def show_list(array) #broken
