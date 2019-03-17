@@ -9,7 +9,7 @@ require_relative "Controllers/Controller"
 require_relative "Views/View"
 
 known_ingredients = KnownIngredient.list
-available_ingredients = AvailableIngredient.list#contains AvailableIngredient
+available_ingredients = AvailableIngredient.list(known_ingredients)#contains AvailableIngredient
 cuisines = Cuisine.list(known_ingredients, available_ingredients)
 
 View.show_ai(available_ingredients)

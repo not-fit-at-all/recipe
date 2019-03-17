@@ -8,19 +8,18 @@ class AvailableIngredient
   attr_reader :expiration
   attr_reader :days_left
   attr_reader :quantity
-  def initialize(name, date_of_purchase)
+  def initialize(name, date_of_purchase, known_ingredients)
     #should take expiration date if available
     @name = name
     @date_of_purchase = date_of_purchase
-    @expiration = self.get_expiration
+    @expiration = self.get_expiration(known_ingredients)
     @days_left = (@expiration - Date.today).to_i
     @quantity = 1 #placeholder. should be fetched from the list
   end
 
-  def get_expiration
+  def get_expiration(known_ingredients = KnownIngredinet.list)
     i = 0
-    kil = KnownIngredient.list#this should not be happening
-    kil.each do |ki|
+    known_ingredients.each do |ki|
       if ki.name == @name
         return @date_of_purchase + ki.shelf_life
         i += 1
@@ -37,7 +36,7 @@ class AvailableIngredient
   end
 
   class << self
-    def list(file_name = "assets/list_of_available_ingredients.txt")
+    def list(known_ingredients, file_name = "assets/list_of_available_ingredients.txt")
       puts "AvailableIngredient.list"
       #convert list of strings into AI, and put it in an array
       #skip if already created
@@ -47,7 +46,7 @@ class AvailableIngredient
         ai = Array.new
         ai = line.chomp.split(/\s\s/) #fails when the file isn't formatted properly
         ai[1] = Date.strptime(ai[1], "%Y/%m/%d")
-        ai_list << self.new(ai[0], ai[1])
+        ai_list << self.new(ai[0], ai[1], known_ingredients)
       end
       file.close
       #sort the list by days left
