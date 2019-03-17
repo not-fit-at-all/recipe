@@ -1,13 +1,8 @@
-potato  2019/1/10
-canned tomato  2019/1/12
 butter  2018/10/1
 salt  2018/10/1
 black pepper  2018/12/20
-pasta  2018/12/10
-bacon  2019/1/10
-cheddar cheese  2019/1/10
+spaghetti  2018/12/10
+cheddar cheese  2019/3/10
 parmesan cheese  2018/12/20
-frozen hamburg  2018/11/15
-frozen boiled spinach  2019/1/2
-garlic  2019/1/10
-spider eggs  1832/11/26
+garlic  2019/3/10
+water  2019/1/1
