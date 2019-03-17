@@ -12,7 +12,7 @@ class KnownIngredient
 
   class << self
       def list(file_name = "assets/list_of_known_ingredients.txt")
-        puts "Controller.list_known_ingredients"
+        puts "KnownIngredient.list"
         ki_list = Array.new
         file = File.open(file_name)
         file.each_line do |line|

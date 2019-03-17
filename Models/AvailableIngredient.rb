@@ -9,7 +9,6 @@ class AvailableIngredient
   attr_reader :days_left
   attr_reader :quantity
   def initialize(name, date_of_purchase)
-    puts "AvailableIngredient.initialize  (#{name})"
     #should take expiration date if available
     @name = name
     @date_of_purchase = date_of_purchase
@@ -19,7 +18,6 @@ class AvailableIngredient
   end
 
   def get_expiration
-    puts " AvailableIngredient.get_expiration"
     i = 0
     kil = KnownIngredient.list#this should not be happening
     kil.each do |ki|

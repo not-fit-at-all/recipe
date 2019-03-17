@@ -13,10 +13,10 @@ class Cuisine
     @required_ingredients = required_ingredients #Contains an array of KnownIngredient
     #quantity?
     @missing_ingredients = self.list_missing_ingredients(available_ingredients)
-  end
+      end
 
   def ready_to_cook?
-    if self.missing_ingredients == nil
+    if @missing_ingredients == nil
       return true
     else
       return self.missing_ingredients
@@ -34,6 +34,7 @@ class Cuisine
           quantity += ai.quantity
         end
       end#ai
+      puts "#{ri.name}, #{quantity}"
       if quantity == 0 #placeholder. should compared to required quantity,saved in cuisine list
         @missing_ingredients << ri
       end
@@ -75,11 +76,9 @@ class Cuisine
             end #each ki
           end #if
         end#if line
-        #need to test this method
-        #View.show_list(required_ingredients)
       end #each line
       return cuisines_list
-    end #method
+    end #list
   end #class << self
 end #class
 
