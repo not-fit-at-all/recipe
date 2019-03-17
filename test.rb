@@ -1,6 +1,10 @@
 require "date"
-require_relative "KnownIngredient"
-require_relative "AvailableIngredient"
-require_relative "Recipe"
-require_relative "Controller"
-require_relative "View"
+require_relative "Models/KnownIngredient"
+require_relative "Models/AvailableIngredient"
+require_relative "Models/Cuisine"
+require_relative "Controllers/Controller"
+require_relative "Views/View"
+
+
+test = [0,1,2,3]
+puts test.include?(3)

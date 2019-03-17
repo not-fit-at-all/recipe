@@ -60,9 +60,9 @@ instances of Cuisine are created and stored in an array.
     returns array of missing ingredients
 
 FLOW:
-  load known ingredients
-  load available ingredients
-  load cuisines
+  load known ingredients - check
+  load available ingredients - check
+  load cuisines - check
 
   using the array of all of the AvailableIngredient,
     create an array of cuisines with all the ingredients available.
