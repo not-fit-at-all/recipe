@@ -56,7 +56,7 @@ class AvailableIngredient
       return ai_list
     end
 
-    def extract(array, max, min = 0)
+    def extract(array, max = 9999999, min = 0)
       puts "AvailableIngredient.extract (#{min} - #{max})"
       #returns array of each group
       #it should just take days_left, as priority is redundant

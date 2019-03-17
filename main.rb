@@ -10,14 +10,16 @@ require_relative "Views/View"
 
 known_ingredients = KnownIngredient.list
 available_ingredients = AvailableIngredient.list(known_ingredients)#contains AvailableIngredient
-cuisines = Cuisine.list(known_ingredients, available_ingredients)
+ai = AvailableIngredient.extract(available_ingredients)
+cuisines = Cuisine.list(known_ingredients, ai)
 
-View.show_ai(available_ingredients)
+View.show_ai(ai)
+
 cuisines.each do |cuisine|
-  if cuisine.missing_ingredients == nil
-    puts "  #{cuisine.name} can be cooked"
+  if cuisine.missing_ingredients.empty?
+    puts "  ingredients for #{cuisine.name} are available"
   else
-    puts "   #{cuisine.name} is missing;"
+    puts "  #{cuisine.name} is missing;"
     cuisine.missing_ingredients.each do|mi|
       puts "    #{mi.name}"
     end

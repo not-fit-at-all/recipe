@@ -13,7 +13,7 @@ class Cuisine
     @required_ingredients = required_ingredients #Contains an array of KnownIngredient
     #quantity?
     @missing_ingredients = self.list_missing_ingredients(available_ingredients)
-      end
+  end
 
   def ready_to_cook?
     if @missing_ingredients == nil
@@ -24,17 +24,17 @@ class Cuisine
   end
 
   def list_missing_ingredients(available_ingredients)
+    puts "#{self.name}.list_missing_ingredients"
     @missing_ingredients = Array.new
     number_of_ai = available_ingredients.length
     @required_ingredients.each do |ri|
       quantity = 0
       miss = 0
       available_ingredients.each do |ai|
-        if @name == ai.name
+        if ri.name == ai.name
           quantity += ai.quantity
         end
       end#ai
-      puts "#{ri.name}, #{quantity}"
       if quantity == 0 #placeholder. should compared to required quantity,saved in cuisine list
         @missing_ingredients << ri
       end
@@ -46,13 +46,12 @@ class Cuisine
   class << self
     def list(known_ingredients = KnownIngredient.list, ai)
       puts "Cuisine.list"
+      cuisines_list = []
+      file = File.open("assets/list_of_cuisines.txt")
+      cuisine_name = ""
+      required_ingredients = [] #temporarily stores th required ingredients
       length = known_ingredients.length
       #puts "  the number of known ingredients = #{length}"
-      cuisines_list = Array.new
-      required_ingredients = Array. new #temporarily holds ri
-      file = File.open("assets/list_of_cuisines.txt")
-      cuisine_name = String.new #resets
-      required_ingredients = Array.new #temporarily stores th required ingredients
       file.each_line do |line|
         if line =~ /^#/ #cuisine's name
           cuisine_name = line.chomp.delete("#") #temporarily holds the names of the cuisine

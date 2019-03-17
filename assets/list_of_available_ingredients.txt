@@ -6,3 +6,5 @@ cheddar cheese  2019/3/10
 parmesan cheese  2018/12/20
 garlic  2019/3/10
 water  2019/1/1
+olive oil  2018/12/20
+red chili  2019/1/1
