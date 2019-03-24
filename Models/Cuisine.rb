@@ -2,30 +2,45 @@ class Cuisine
   require_relative "KnownIngredient"
   require_relative "AvailableIngredient"
   #look for the recipes that use ingredints of each priority group
-  #and return them as an array, sorted by the number of high prio ingredients they consume
+  #and return them as an array, sorted by the number of
+  #high prio ingredients they consume
   #it knows if it can be cooked with the ingredients available,
   #and what needs to be bought if not.
   attr_reader :name
   attr_reader :required_ingredients
   attr_reader :missing_ingredients
   def initialize(name, required_ingredients, available_ingredients)
-    @name = name #The name of the cuisine
-    @required_ingredients = required_ingredients #Contains an array of KnownIngredient
+    @name = name
+    @required_ingredients = required_ingredients
     #quantity?
     @missing_ingredients = self.list_missing_ingredients(available_ingredients)
+    @priority = 1#placeholder
   end
 
-  def ready_to_cook?
-    if @missing_ingredients == nil
-      return true
+
+
+  def check_readyness(ai_extract)
+    puts "Cuisine.check_readyness"
+    extract_mi = self.list_missing_ingredients(ai_extract)
+    difference = @missing_ingredients.length - extract_mi.length
+    puts "#{extract_mi.length} vs #{@missing_ingredients.length}"
+
+    if extract_mi.empty?
+      puts '  You have none of its ingredients.'
+    elsif extract_mi.length > @missing_ingredients.length
+      puts '  You have some of its ingredients.'
+    elsif extract_mi.length == @missing_ingredients.length
+      puts '  You have all if its ingredients.'
     else
-      return self.missing_ingredients
+      puts '  The part is greater than whole.'
     end
+
+    return difference
   end
 
   def list_missing_ingredients(available_ingredients)
     puts "#{self.name}.list_missing_ingredients"
-    @missing_ingredients = Array.new
+    mi = Array.new
     number_of_ai = available_ingredients.length
     @required_ingredients.each do |ri|
       quantity = 0
@@ -35,11 +50,12 @@ class Cuisine
           quantity += ai.quantity
         end
       end#ai
-      if quantity == 0 #placeholder. should compared to required quantity,saved in cuisine list
-        @missing_ingredients << ri
+      if quantity == 0 #placeholder.
+        #should be compared to required quantity,saved in cuisine list
+        mi << ri
       end
     end#ri
-    return @missing_ingredients
+    return mi
   end
 
 
@@ -54,8 +70,8 @@ class Cuisine
       #puts "  the number of known ingredients = #{length}"
       file.each_line do |line|
         if line =~ /^#/ #cuisine's name
-          cuisine_name = line.chomp.delete("#") #temporarily holds the names of the cuisine
-        elsif line =~ /^$/ #end of the required ingredients
+          cuisine_name = line.chomp.delete("#")
+        elsif line =~ /^$/ #end of required_ingredients
           cuisines_list << Cuisine.new(cuisine_name, required_ingredients, ai)
           cuisine = nil
           required_ingredients =Array.new
@@ -78,6 +94,9 @@ class Cuisine
       end #each line
       return cuisines_list
     end #list
+
+
+
   end #class << self
 end #class
 

@@ -8,3 +8,7 @@ require_relative "Views/View"
 
 test = [0,1,2,3]
 puts test.include?(3)
+test = [0]
+puts test.length
+test = []
+puts test.length

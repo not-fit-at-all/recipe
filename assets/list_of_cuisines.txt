@@ -42,6 +42,13 @@ potato
 carrot
 onion
 
+#Omlette
+egg
+cheddar cheese
+bacon
+black pepper
+salt
+
 #Ratatouille
 onion
 zucchini

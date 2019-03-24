@@ -14,12 +14,12 @@ class View
       end
     end
 
-    def show_ai(available_ingredients)
+    def show_ai(ai)
       puts "View.show_ai"
-      if available_ingredients.length == 0
-        puts "NONE"
+      if ai.length == 0
+        puts "  NONE"
       else
-        available_ingredients.each do |ai|
+        ai.each do |ai|
           puts "  #{ai.days_left} days left for #{ai.name}"
         end
       end

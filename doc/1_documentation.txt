@@ -1,7 +1,8 @@
 assets
 list of known ingredients
   contains names, how long they generally last.
-  (in future they should also contain how to convert between different units.)
+  (in future they should also contain how to
+  convert between different units.)
 
 list of available ingredients
   contains list of ingredients available.
@@ -41,7 +42,8 @@ instances of AvailableIngredient are created and stored in arrays.
     ex. two potatoes that expire tomorrow and one that expires next week
   so when a method tries to get the quantity,
   it should read the array thoroughly then sum.
-  AvailableIngredient class is necessary to determine what I can cook right now.
+  AvailableIngredient class is necessary
+  to determine what I can cook right now.
   .extract method creates an array depending on @days_left.
 
 instances of Cuisine are created and stored in an array.
@@ -65,10 +67,11 @@ FLOW:
   load cuisines - check
 
   using the array of all of the AvailableIngredient,
-    create an array of cuisines with all the ingredients available.
+    create an array of cuisines with all the ingredients available. -check
     do not show now, just store.
   extract high priority AI,
-  feed it to a method of Cuisine to count how many high priority stuff they use.
+  feed it to a method of Cuisine to count
+  how many high priority stuff they use.
   sort the aforementioned array using the numbers just got. BATHROOM
 
 Models seem generally fine.

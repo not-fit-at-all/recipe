@@ -9,12 +9,19 @@ require_relative "Controllers/Controller"
 require_relative "Views/View"
 
 known_ingredients = KnownIngredient.list
-available_ingredients = AvailableIngredient.list(known_ingredients)#contains AvailableIngredient
+available_ingredients = AvailableIngredient.list(known_ingredients)
 ai = AvailableIngredient.extract(available_ingredients)
 cuisines = Cuisine.list(known_ingredients, ai)
+high_priority = AvailableIngredient.extract(ai, 3, 0)
 
+puts '========================'
+puts 'p ai'
+puts ai
+puts ai.length
+
+View.show_ai(high_priority)
 View.show_ai(ai)
-
+puts '========================'
 cuisines.each do |cuisine|
   if cuisine.missing_ingredients.empty?
     puts "  ingredients for #{cuisine.name} are available"
@@ -23,14 +30,18 @@ cuisines.each do |cuisine|
     cuisine.missing_ingredients.each do|mi|
       puts "    #{mi.name}"
     end
-
   end
 end
 
 
+high_priority = AvailableIngredient.extract(available_ingredients, 3)
+View.show_ai(high_priority)
+
+cuisines.each do |c|
+  puts c.name
+  c.check_readyness(high_priority)
+end
 =begin
-high_priority = AvailableIngredient.extract(available_ingredients, 1)
-#View.show_ai(high_priority)
 puts "===================================="
 midium_priority = AvailableIngredient.extract(available_ingredients, 3,2)
 #View.show_ai(midium_priority)

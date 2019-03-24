@@ -1,4 +1,3 @@
-
 class AvailableIngredient
   require "date"
   require_relative "KnownIngredient"
@@ -8,12 +7,15 @@ class AvailableIngredient
   attr_reader :expiration
   attr_reader :days_left
   attr_reader :quantity
+  attr_reader :priority
+
   def initialize(name, date_of_purchase, known_ingredients)
     #should take expiration date if available
     @name = name
     @date_of_purchase = date_of_purchase
     @expiration = self.get_expiration(known_ingredients)
     @days_left = (@expiration - Date.today).to_i
+    @priority = self.get_priority
     @quantity = 1 #placeholder. should be fetched from the list
   end
 
@@ -33,6 +35,16 @@ class AvailableIngredient
       #this dialogue should add the ingredient to the list and the file,
       #instead of just proceeding like this
     end
+  end
+
+  def get_priority
+    puts "#{self.name}.get_priority"
+      if self.days_left >= 0
+          priority = 0
+        else
+          priority = (1 / self.days_left) ** 2
+        end
+    return priority
   end
 
   class << self
@@ -63,13 +75,12 @@ class AvailableIngredient
       #but needs some functionarity to target a span of time
       extract = Array.new
       array.each do |ai|
+        puts "  #{ai.name}, #{ai.days_left}"
         if ai.days_left <= max and ai.days_left > min
           extract << ai
         end
       end
       return extract
     end #def extract_ai
-
   end
-
 end
